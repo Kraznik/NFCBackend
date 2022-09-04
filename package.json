@@ -17,7 +17,7 @@
     "dids": "^3.3.0",
     "dotenv": "^16.0.0",
     "ejs": "~2.6.1",
-    "ethers": "^5.6.8",
+    "ethers": "^5.7.0",
     "express": "~4.16.1",
     "express-fileupload": "^1.4.0",
     "form-data": "^4.0.0",

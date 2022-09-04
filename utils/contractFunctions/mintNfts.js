@@ -1,25 +1,7 @@
 const calculateGasFee = require("../calculateGasFee");
-const {
-  Diamond1,
-  wallet1,
-  Diamond2,
-  wallet2,
-  Diamond3,
-  wallet3,
-} = require("../ethereum/Diamond");
+const { Diamond, wallet } = require("../ethereum/Diamond");
 
-const mintNfts = async (nftTypeId, toAddress, category) => {
-  if (category === "ethbcn") {
-    var Diamond = Diamond1;
-    var wallet = wallet1;
-  } else if (category === "dogud") {
-    var Diamond = Diamond2;
-    var wallet = wallet2;
-  } else if (category === "ethcc") {
-    var Diamond = Diamond3;
-    var wallet = wallet3;
-  }
-
+const mintNfts = async (nftTypeId, toAddress) => {
   const creatorTypeId = parseInt(nftTypeId.slice(-12), 16);
   const gasFees = await calculateGasFee();
   console.log(gasFees);

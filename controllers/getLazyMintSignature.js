@@ -1,18 +1,9 @@
-const { wallet1, wallet2, wallet3 } = require("../utils/ethereum/Diamond");
+const { wallet } = require("../utils/ethereum/Diamond");
 const ethers = require("ethers");
 
 const getLazyMintSignature = async (req, res, next) => {
   const { hash } = req.body;
-  const { category } = req.params;
   console.log("sig hash: ", hash);
-
-  if (category === "ethbcn") {
-    var wallet = wallet1;
-  } else if (category === "dogud") {
-    var wallet = wallet2;
-  } else if (category === "ethcc") {
-    var wallet = wallet3;
-  }
 
   try {
     const sign = async (message) =>

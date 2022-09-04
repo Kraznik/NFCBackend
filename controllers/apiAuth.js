@@ -2,12 +2,10 @@ const { randomBytes } = require("@stablelib/random");
 const { SiweMessage, Cacao } = require("ceramic-cacao");
 const config = require("../config");
 const axios = require("axios");
-const { ethers } = require("hardhat");
+const { wallet } = require("../utils/ethereum/Diamond");
+const { ethers } = require("ethers");
 
 console.log(config.chainId);
-const provider = new ethers.providers.JsonRpcProvider(config.alchemyUrl);
-const wallet = new ethers.Wallet(config.privateKey.creator, provider);
-// const wallet = ethers.Wallet.fromMnemonic(config.mnemonic);
 console.log("wallet: ", wallet.address);
 
 const addCapToDid = async (wallet, didKey, resource) => {

@@ -1,27 +1,10 @@
-const {
-  Diamond1,
-  wallet1,
-  Diamond2,
-  wallet2,
-  Diamond3,
-  wallet3,
-} = require("../ethereum/Diamond");
+const { Diamond, wallet } = require("../ethereum/Diamond");
 const ethers = require("ethers");
 const calculateGasFee = require("../calculateGasFee");
 const axios = require("axios");
 const config = require("../../config");
 
-const buyLazyMint = async (nftTypeId, params, category) => {
-  if (category === "ethbcn") {
-    var Diamond = Diamond1;
-    var wallet = wallet1;
-  } else if (category === "dogud") {
-    var Diamond = Diamond2;
-    var wallet = wallet2;
-  } else if (category === "ethcc") {
-    var Diamond = Diamond3;
-    var wallet = wallet3;
-  }
+const buyLazyMint = async (nftTypeId, params) => {
   const gasFees = await calculateGasFee();
 
   //   console.log(params.nftTypeDefinition.ipfsCid);

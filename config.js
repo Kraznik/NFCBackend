@@ -5,10 +5,7 @@ const config_testnet = {
   dgApiBaseUrl: `https://api-main.doingud.work`,
   mnemonic: process.env.MNEMONIC,
   privateKey: {
-    creator: process.env.CREATOR_PRIVATE_KEY,
-    ethBcnMoments: process.env.MOMENTS_TEST_PRIVATE_KEY,
-    dgMoments: process.env.DG_MOMENTS_TEST_PRIVATE_KEY,
-    ethCcMoments: process.env.ETHCC_MOMENTS_TEST_PRIVATE_KEY,
+    nfcCreator: process.env.CREATOR_PRIVATE_KEY,
   },
   ZERO_ADDRESS: "0x0000000000000000000000000000000000000000",
 };
@@ -20,10 +17,7 @@ const config_mainnet = {
   dgApiBaseUrl: `https://api.doingud.com`,
   mnemonic: process.env.MNEMONIC,
   privateKey: {
-    creator: process.env.CREATOR_PRIVATE_KEY,
-    ethBcnMoments: process.env.ETH_BCN_MOMENTS_PRIVATE_KEY,
-    dgMoments: process.env.DG_MOMENTS_PRIVATE_KEY,
-    ethCcMoments: process.env.ETHCC_MOMENTS_PRIVATE_KEY,
+    nfcCreator: process.env.CREATOR_PRIVATE_KEY,
   },
   ZERO_ADDRESS: "0x0000000000000000000000000000000000000000",
 };

@@ -30,19 +30,11 @@ module.exports = {
     hardhat: {},
     polygon: {
       url: config.alchemyUrl,
-      accounts: [
-        config.privateKey.creator,
-        config.privateKey.ethBcnMoments,
-        config.privateKey.dgMoments,
-      ],
+      accounts: [config.privateKey.nfcCreator],
     },
     mumbai: {
       url: config.alchemyUrl,
-      accounts: [
-        config.privateKey.creator,
-        config.privateKey.ethBcnMoments,
-        config.privateKey.dgMoments,
-      ],
+      accounts: [config.privateKey.nfcCreator],
     },
   },
   solidity: {
