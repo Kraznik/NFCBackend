@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   NfcCollection.init({
     nfcId: DataTypes.STRING,
     maxEditions: DataTypes.INTEGER,
-    nftTypeId: DataTypes.INTEGER,
+    nftTypeId: DataTypes.STRING,
     title: DataTypes.STRING,
     wallet: DataTypes.STRING
   }, {
