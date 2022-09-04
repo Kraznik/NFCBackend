@@ -1,4 +1,3 @@
-require("hardhat");
 const buyLazyMint = require("../utils/contractFunctions/buyLazyMint");
 const mintNfts = require("../utils/contractFunctions/mintNfts");
 
@@ -20,7 +19,9 @@ const mintNfcCreation = async (req, res, next) => {
     res.status(201).json({ response });
   } catch (error) {
     // throw error;
-    return res.status(404).json({ message: "Could not mint the ethcc moment" });
+    return res
+      .status(404)
+      .json({ message: "Could not mint the to the collaborator" });
   }
 };
 
