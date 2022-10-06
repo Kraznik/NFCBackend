@@ -21,4 +21,11 @@ router.patch("/nfcId/:id", auth, require("../controllers/patchNFCId"));
 
 router.get("/getAccessToken", require("../controllers/apiAuth"));
 
+//scavengerHunt
+
+router.get("/getEvent/:id", auth, require("../controllers/getEventScavanger"));
+router.get("/hunt/:eventId/:ticketId", auth, require("../controllers/getHunt"));
+router.post("/hunt", auth, require("../controllers/postHunt"));
+router.patch("/hunt/:eventId/:ticketId", auth, require("../controllers/updateHunt"));
+
 module.exports = router;
