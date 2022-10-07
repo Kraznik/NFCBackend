@@ -1,54 +1,29 @@
 var Hunt = require("../models").Hunt;
+var huntEvent = require("../models").huntEvent
 
 module.exports = async function (req, res) {
-  var hunt0 = await Hunt.findAll({
-    order: [["updatedAt", "ASC"]],
-    where: { data: 9 },
-  });
-  var hunt1 = await Hunt.findAll({
-    order: [["updatedAt", "ASC"]],
-    where: { data: 8 },
-  });
-  var hunt2 = await Hunt.findAll({
-    order: [["updatedAt", "ASC"]],
-    where: { data: 7 },
-  });
-  var hunt3 = await Hunt.findAll({
-    order: [["updatedAt", "ASC"]],
-    where: { eventUUID:eventId,data:{data: 6} },
-  });
-  var hunt4 = await Hunt.findAll({
-    order: [["updatedAt", "ASC"]],
-    where: { data: 5 },
-  });
-  var hunt5 = await Hunt.findAll({
-    order: [["updatedAt", "ASC"]],
-    where: { data: 4 },
-  });
-  var hunt6 = await Hunt.findAll({
-    order: [["updatedAt", "ASC"]],
-    where: { data: 3 },
-  });
-  var hunt7 = await Hunt.findAll({
-    order: [["updatedAt", "ASC"]],
-    where: { data: 2 },
-  });
-  var hunt8 = await Hunt.findAll({
-    order: [["updatedAt", "ASC"]],
-    where: { data: 1 },
-  });
 
-  var arr = [
-    ...hunt0,
-    ...hunt1,
-    ...hunt2,
-    ...hunt3,
-    ...hunt4,
-    ...hunt5,
-    ...hunt6,
-    ...hunt7,
-    ...hunt8,
-  ];
+  let{eventId} = req.params;
+
+  var event = await huntEvent.findAll({where:{uuid:eventId}});
+
+  var huntLead= []
+
+  for(i=0; i<event[0].data.length; i++)
+  {
+    huntLead["hunt"+i] = await Hunt.findAll({
+      order: [["updatedAt", "ASC"]],
+      where: { data: {data:  (event[0].data.length-i)}},
+    });
+  }
+  var arr = []
+
+  for(i=0; i<event[0].data.length; i++)
+  {
+    arr = [...arr,...huntLead["hunt"+i]]
+  }
+  
+  
 
   var data = {
     rank: {},

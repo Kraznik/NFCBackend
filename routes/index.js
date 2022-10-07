@@ -27,5 +27,6 @@ router.get("/getEvent/:id", auth, require("../controllers/getEventScavanger"));
 router.get("/hunt/:eventId/:ticketId", auth, require("../controllers/getHunt"));
 router.post("/hunt", auth, require("../controllers/postHunt"));
 router.patch("/hunt/:eventId/:ticketId", auth, require("../controllers/updateHunt"));
+router.get("/huntLeadrboard/:eventId", auth, require("../controllers/getHuntLeaderboard"));
 
 module.exports = router;
