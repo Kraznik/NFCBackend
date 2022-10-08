@@ -90,4 +90,52 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
+
+//testing
+
+const fs = require("fs")
+const Jimp = require('jimp');
+var QRCode = require('qrcode')
+
+async function test(){
+  var bg = await Jimp.read(`./public/bg.png`);
+  var image1 = await Jimp.read(`https://gateway.pinata.cloud/ipfs/QmavYWUp68dv5gqjrb5ueSp4BHgdsVHFKkZuDkyEMrQa7s`);
+  image1.resize(Jimp.AUTO,600);
+  bg.composite(image1,bg.bitmap.width/2-image1.bitmap.width/2,350);
+
+  const font = await Jimp.loadFont("./public/MXfnces00eitd2ZIbD_O_9LL.ttf.fnt");
+  const font1 = await Jimp.loadFont("./public/UVlI7_gD6w7WBBK8_LmJG0FJ.ttf.fnt");
+  const font2 = await Jimp.loadFont("./public/kEO276MrJpMd0SxlVrCeui7f.ttf.fnt");
+
+  var textWidth = Jimp.measureText(font, "Manu Alzuru");
+
+  bg.print(font, bg.bitmap.width/2-textWidth/2, 150,{
+    text: "Manu Alzuru"
+  });
+
+  bg.print(font1, 370, 1015,{
+    text: "333"
+  });
+
+  bg.print(font2, 120, 1097,{
+    text: "@Manu_Alzuru"
+  });
+
+  bg.print(font2, 120, 1172,{
+    text: "@Manu_Alzuru"
+  });
+
+  var buffer1 = await QRCode.toDataURL('https://doingud.com');
+
+  var buffer = new Buffer(buffer1.replace(/^data:image\/\w+;base64,/, ""),'base64');
+  console.log(buffer);
+
+  var image2 = await Jimp.read(buffer);
+  image2.resize(220,220)
+
+  bg.composite(image2,577,1015)
+
+  bg.write("./public/test.png");
+}
+
 module.exports = app;
