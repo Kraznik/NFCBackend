@@ -17,7 +17,7 @@ module.exports = async function (req, res) {
 
   uuid = uuidv4()
 
-  var create = await devconCreations.create({nftTypeId,name,twitter,telegram,photoLink,collected: 0,uuid})
+  var create = await devconCreations.create({nftTypeId,name,twitter,telegram,photoLink,collected: 0,uuid,maxEditions: process.env.maxEditions})
 
   console.log(create.id);
   var bg = await Jimp.read(`./public/bg.png`);
@@ -64,6 +64,9 @@ module.exports = async function (req, res) {
     generatedPhotoLink: `${process.env.home_url}/files/${nftTypeId}.png`
   },{where:{id: create.id}});
 
-  res.json({ message: "Success", link: `${process.env.home_url}/files/${nftTypeId}.png`});
+  var findCreations = await devconCreations.findAll({ where: {id: create.id} });
+
+
+  res.json({ message: "Success", data: findCreations[0]});
   return;
 };

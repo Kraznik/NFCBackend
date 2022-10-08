@@ -21,7 +21,8 @@ module.exports = (sequelize, DataTypes) => {
     photoLink: DataTypes.STRING,
     generatedPhotoLink: DataTypes.STRING,
     uuid: DataTypes.STRING,
-    collected: DataTypes.INTEGER
+    collected: DataTypes.INTEGER,
+    maxEditions: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'devconCreations',
