@@ -29,7 +29,21 @@ router.get("/getAccessToken", require("../controllers/apiAuth"));
 router.get("/getEvent/:id", auth, require("../controllers/getEventScavanger"));
 router.get("/hunt/:eventId/:ticketId", auth, require("../controllers/getHunt"));
 router.post("/hunt", auth, require("../controllers/postHunt"));
-router.patch("/hunt/:eventId/:ticketId", auth, require("../controllers/updateHunt"));
-router.get("/huntLeadrboard/:eventId", auth, require("../controllers/getHuntLeaderboard"));
+router.patch(
+  "/hunt/:eventId/:ticketId",
+  auth,
+  require("../controllers/updateHunt")
+);
+router.get(
+  "/huntLeadrboard/:eventId",
+  auth,
+  require("../controllers/getHuntLeaderboard")
+);
+
+router.post(
+  "/mintHunt/:eventId",
+  auth,
+  require("../controllers/mintHuntToken")
+);
 
 module.exports = router;

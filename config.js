@@ -4,6 +4,13 @@ const config_testnet = {
   alchemyUrl: `https://polygon-mumbai.g.alchemy.com/v2/${process.env.MUMBAI_ALCHEMY_KEY}`,
   dgApiBaseUrl: `https://api-main.doingud.work`,
   mnemonic: process.env.MNEMONIC,
+  hunts: {
+    murals: {
+      1: "0x66dc3bfcd29e24fddee7f405c705220e6142e4cd000000000067",
+      2: "0x66dc3bfcd29e24fddee7f405c705220e6142e4cd000000000068",
+      3: "0x66dc3bfcd29e24fddee7f405c705220e6142e4cd000000000069",
+    },
+  },
   privateKey: {
     nfcCreator: process.env.CREATOR_PRIVATE_KEY,
   },
@@ -15,6 +22,13 @@ const config_mainnet = {
   contractAddress: "0xE3A161EdD679fC5ce2dB2316a4B6f7ab33a8eD6A",
   alchemyUrl: `https://polygon-mainnet.g.alchemy.com/v2/${process.env.MAINNET_ALCHEMY_KEY}`,
   dgApiBaseUrl: `https://api.doingud.com`,
+  hunts: {
+    murals: {
+      1: "0x66dc3bfcd29e24fddee7f405c705220e6142e4cd000000000067",
+      2: "0x66dc3bfcd29e24fddee7f405c705220e6142e4cd000000000068",
+      3: "0x66dc3bfcd29e24fddee7f405c705220e6142e4cd000000000069",
+    },
+  },
   mnemonic: process.env.MNEMONIC,
   privateKey: {
     nfcCreator: process.env.CREATOR_PRIVATE_KEY,
