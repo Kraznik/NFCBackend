@@ -22,8 +22,17 @@ module.exports = async function (req, res) {
   console.log(create.id);
   var bg = await Jimp.read(`./public/bg.png`);
   var image1 = await Jimp.read(photoLink);
-  image1.resize(Jimp.AUTO,600);
-  bg.composite(image1,bg.bitmap.width/2-image1.bitmap.width/2,350);
+
+  if(image1.bitmap.width > 600)
+  {
+    image1.resize(600,Jimp.AUTO);
+    bg.composite(image1,bg.bitmap.width/2-image1.bitmap.width/2,350+300-image1.bitmap.height/2);
+  }else{
+    image1.resize(Jimp.AUTO,600);
+    bg.composite(image1,bg.bitmap.width/2-image1.bitmap.width/2,350);
+  }
+
+  
 
   const font = await Jimp.loadFont("./public/MXfnces00eitd2ZIbD_O_9LL.ttf.fnt");
   const font1 = await Jimp.loadFont("./public/UVlI7_gD6w7WBBK8_LmJG0FJ.ttf.fnt");
