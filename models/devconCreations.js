@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   devconCreations.init({
+    walletAddress: DataTypes.STRING,
     nftTypeId: DataTypes.STRING,
     name: DataTypes.STRING,
     twitter: DataTypes.STRING,

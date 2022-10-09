@@ -9,13 +9,33 @@ const claimDevconSticker = async (req, res, next) => {
     console.log(nftTypeId);
     let response = {};
 
+    var checkWallet = await devconCollectors.findAll({
+      where: { wallet: toAddress },
+    });
+
+    if(checkWallet.length)
+    {
+      var nftTypeIds = checkWallet[0].nftTypeId;
+
+      if(nftTypeIds.length)
+      {
+        for(i=0; i<nftTypeIds.length; i++)
+        {
+          if(nftTypeIds[i] == nftTypeId)
+          {
+            res.send({error: "NFT Type Id already exist."});
+            return;
+          }
+        }
+      }
+
+    }
+
     console.log("to: ", toAddress);
     await mintNfts(nftTypeId, toAddress);
     response.mintedToWallet = true;
 
-    var checkWallet = await devconCollectors.findAll({
-      where: { wallet: toAddress },
-    });
+    
 
     if (checkWallet.length) {
       var nftTypes = checkWallet[0].nftTypeId;

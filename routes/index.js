@@ -31,6 +31,7 @@ router.get(
 );
 router.get("/getDataUuid/:id", auth, require("../controllers/getDataUuid"));
 router.get("/getDataNftTypeId/:id", auth, require("../controllers/getDataNft"));
+router.get("/getDataWallet/:id", auth, require("../controllers/getDataWallet"));
 router.post(
   "/claimDevconSticker",
   auth,

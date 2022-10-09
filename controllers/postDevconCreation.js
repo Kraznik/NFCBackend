@@ -6,7 +6,7 @@ var devconCreations = require("../models").devconCreations;
 
 
 module.exports = async function (req, res) {
-  let { nftTypeId, name, twitter, telegram, photoLink } = req.body;
+  let { walletAddress,nftTypeId, name, twitter, telegram, photoLink } = req.body;
 
   var checkCreations = await devconCreations.findAll({ where: { nftTypeId} });
 
@@ -17,7 +17,7 @@ module.exports = async function (req, res) {
 
   uuid = uuidv4()
 
-  var create = await devconCreations.create({nftTypeId,name,twitter,telegram,photoLink,collected: 0,uuid,maxEditions: process.env.maxEditions})
+  var create = await devconCreations.create({walletAddress,nftTypeId,name,twitter,telegram,photoLink,collected: 0,uuid,maxEditions: process.env.maxEditions})
 
   console.log(create.id);
   var bg = await Jimp.read(`./public/bg.png`);
