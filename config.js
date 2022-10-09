@@ -12,7 +12,7 @@ const config_testnet = {
     },
   },
   privateKey: {
-    nfcCreator: process.env.CREATOR_PRIVATE_KEY,
+    nfcCreator: process.env.TEST_CREATOR_PRIVATE_KEY,
   },
   ZERO_ADDRESS: "0x0000000000000000000000000000000000000000",
 };
