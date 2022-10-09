@@ -67,7 +67,7 @@ const claimDevconSticker = async (req, res, next) => {
 
     res.status(201).json({ response });
   } catch (error) {
-    // throw error;
+    console.log(error);
     return res.status(404).json({ message: "Could not airdrop the creation" });
   }
 };
