@@ -38,13 +38,13 @@ module.exports = async function (req, res) {
 
     if(image1.bitmap.height > 600)
     {
-      image1.resize(600,Jimp.AUTO);
+      image1.resize(Jimp.AUTO,600);
       bg.composite(image1,bg.bitmap.width/2-image1.bitmap.width/2,350);
     }else{
     
       bg.composite(image1,bg.bitmap.width/2-image1.bitmap.width/2,350+300-image1.bitmap.height/2);
     }
-    
+
   } else {
     image1.resize(Jimp.AUTO, 600);
 
