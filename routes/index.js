@@ -19,17 +19,40 @@ router.post("/claimWithNfc", auth, require("../controllers/claimWithNfc"));
 router.get("/nfcId/:id", auth, require("../controllers/getNFCId"));
 router.patch("/nfcId/:id", auth, require("../controllers/patchNFCId"));
 
-router.post("/devconCreation", auth, require("../controllers/postDevconCreation"));
-router.get("/downloadLink/:id", auth, require("../controllers/getDownloadLink"));
+router.post(
+  "/devconCreation",
+  auth,
+  require("../controllers/postDevconCreation")
+);
+router.get(
+  "/downloadLink/:id",
+  auth,
+  require("../controllers/getDownloadLink")
+);
 router.get("/getDataUuid/:id", auth, require("../controllers/getDataUuid"));
 router.get("/getDataNftTypeId/:id", auth, require("../controllers/getDataNft"));
+router.post(
+  "/claimDevconSticker",
+  auth,
+  require("../controllers/claimDevconSticker")
+);
 
-router.get("/collectorLeaderboard", auth, require("../controllers/getCollecterLeaderboard"));
-router.get("/creationLeaderboard", auth, require("../controllers/getCreationLeaderboard"));
+router.get(
+  "/collectorLeaderboard",
+  auth,
+  require("../controllers/getCollecterLeaderboard")
+);
+router.get(
+  "/creationLeaderboard",
+  auth,
+  require("../controllers/getCreationLeaderboard")
+);
 
-
-router.get("/nfcLeaderboard", auth, require("../controllers/getNfcLeaderboard"));
-
+router.get(
+  "/nfcLeaderboard",
+  auth,
+  require("../controllers/getNfcLeaderboard")
+);
 
 router.get("/getAccessToken", require("../controllers/apiAuth"));
 

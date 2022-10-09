@@ -51,6 +51,7 @@ const mintNfts = async (nftTypeId, toAddress) => {
     await tx.wait();
     console.log("Txn completed..");
   } catch (err) {
+    throw err;
     console.error(err);
   }
 };
