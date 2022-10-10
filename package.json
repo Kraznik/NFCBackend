@@ -26,7 +26,7 @@
     "heic-convert": "^1.2.4",
     "http-errors": "~1.6.3",
     "image-convert": "^0.1.33",
-    "jimp": "^0.16.2",
+    "jimp": "^0.9.8",
     "key-did-provider-ed25519": "^2.0.1",
     "key-did-resolver": "^2.1.0",
     "morgan": "~1.9.1",
