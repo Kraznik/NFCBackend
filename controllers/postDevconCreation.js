@@ -76,21 +76,12 @@ module.exports = async function (req, res) {
     }
 
     console.log("hello");
+    var imgbuffer = new Buffer(
+      uri.replace(/^data:image\/\w+;base64,/, ""),
+      "base64"
+    );
 
-    imgConvert.fromBuffer({
-      buffer: uri,//replace with buffer
-      quality: 50, //quality
-      output_format: "jpg", //jpg
-      size: "original" //defualt
-  },async function(err,buffer,file){
-      if(err)
-      {
-          console.log(err);
-          res.json({ error: "Problem" }); 
-          return;
-      }
-  
-      var image1 = await Jimp.read(buffer);
+    var image1 = await Jimp.read(imgbuffer);
   
     if (image1.bitmap.width > 600) {
       image1.resize(600, Jimp.AUTO);
@@ -177,8 +168,25 @@ module.exports = async function (req, res) {
   
     res.json({ message: "Success", data: findCreations[0] });
     return;
+
+  //   imgConvert.fromBuffer({
+  //     buffer: uri,//replace with buffer
+  //     quality: 50, //quality
+  //     output_format: "jpg", //jpg
+  //     size: "original" //defualt
+  // },async function(err,buffer,file){
+  //     if(err)
+  //     {
+  //         console.log(err);
+  //         res.json({ error: "Problem" }); 
+  //         return;
+  //     }
+
+  //     console.log(buffer);
   
-    })
+      
+  
+  //   })
 
 
   });
