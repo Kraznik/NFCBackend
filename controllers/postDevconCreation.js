@@ -56,12 +56,14 @@ module.exports = async function (req, res) {
 
     if(resp.headers['content-type'] == "image/heic")
     {
+
       const outputBuffer = await convert({
         buffer: imgbuffer, // the HEIC file buffer
         format: 'PNG', // output format
       });
+      
       console.log(outputBuffer);
-      var mime = 'image/png'; 
+      var mime = 'image/PNG'; 
       var encoding = 'base64'; 
       var data = outputBuffer.toString(encoding); 
       uri = 'data:' + mime + ';' + encoding + ',' + data;
@@ -72,6 +74,8 @@ module.exports = async function (req, res) {
       var data = imgbuffer.toString(encoding); 
       uri = 'data:' + mime + ';' + encoding + ',' + data;
     }
+
+    console.log("hello");
 
     imgConvert.fromBuffer({
       buffer: uri,//replace with buffer
