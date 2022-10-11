@@ -27,7 +27,8 @@ const mintHuntToken = async (req, res) => {
 
       for (i = 0; i < event[0].data.length - 1; i++) {
         if (req.body["part" + (i + 1)]) {
-          const nftTypeId = config.hunts.murals[i + 1];
+          const nftTypeId = event[0].data[i].nftTypeId;
+          console.log("parts: ", "part" + (i + 1), nftTypeId);
           await mintNfts(nftTypeId, toAddress);
           updateData["part" + (i + 1)] = req.body["part" + (i + 1)];
         }
@@ -49,6 +50,23 @@ const mintHuntToken = async (req, res) => {
           count++;
         }
       }
+
+      console.log("COUNT: ", count);
+
+      try {
+        if (count == event[0].data.length - 1) {
+          const nftTypeId = event[0].data[event[0].data.length - 1].nftTypeId;
+          console.log("final nft: ", nftTypeId);
+          await mintNfts(nftTypeId, toAddress);
+          count++;
+        }
+      } catch (err) {
+        data = {
+          error: "Unable to mint final NFT",
+        };
+      }
+
+      console.log("FINAL COUNT: ", count);
 
       updateData = huntInfo[0].data;
 
