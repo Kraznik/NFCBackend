@@ -20,6 +20,14 @@ module.exports = async function (req, res) {
   // ticketId = "CM_"+email.slice(0, 5);
   ticketId = walletAddress;
 
+  var checkTicket = await Hunt.findAll({where: {ticketId}});
+
+  if(checkTicket.length)
+  {
+    res.send({error: "Ticket Id already Exist"});
+    return;
+  }
+
   var post = await Hunt.create({
     eventUUID: eventId,
     email,
