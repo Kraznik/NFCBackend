@@ -19,6 +19,8 @@ router.post("/claimWithNfc", auth, require("../controllers/claimWithNfc"));
 router.get("/nfcId/:id", auth, require("../controllers/getNFCId"));
 router.patch("/nfcId/:id", auth, require("../controllers/patchNFCId"));
 
+router.get("/getFiles/:name",require("../controllers/getFiles"));
+
 router.post(
   "/devconCreation",
   auth,
