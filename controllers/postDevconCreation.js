@@ -130,15 +130,15 @@ module.exports = async function (req, res) {
         text: name,
       });
     
-      bg.print(font1, 370, 1015, {
+      bg.print(font1, 370, 1035, {
         text: create.id.toString(),
       });
     
-      bg.print(font2, 120, 1097, {
+      bg.print(font2, 120, 1117, {
         text: twitter,
       });
     
-      bg.print(font2, 120, 1172, {
+      bg.print(font2, 120, 1192, {
         text: telegram,
       });
     
@@ -153,7 +153,7 @@ module.exports = async function (req, res) {
       var image2 = await Jimp.read(buffer);
       image2.resize(220, 220);
     
-      bg.composite(image2, 577, 1015);
+      bg.composite(image2, 587, 1035);
     
       bg.write(`./public/files/${nftTypeId}.png`);
     
